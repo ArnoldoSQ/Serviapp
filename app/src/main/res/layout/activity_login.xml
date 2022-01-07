@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -18,17 +17,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:src="@drawable/logo" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_email"
-       android:layout_below="@id/imagen_Sesion"
+        android:layout_below="@id/imagen_Sesion"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:layout_centerHorizontal="true"
-
-       />
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/password"
@@ -42,8 +40,7 @@
         android:rotationX="12"
         android:selectAllOnFocus="true"
         android:layout_below="@id/username"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/login"
@@ -53,11 +50,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="start"
         android:layout_marginBottom="350dp"
-        android:enabled="false"
         android:text="@string/action_sign_in" />
-
-
-
 
     <Button
         android:id="@+id/ingresar_r"
@@ -73,10 +66,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
         android:text="Soy Socio"
-        android:layout_marginStart="18dp"
-
-        />
-
-
-
+        android:layout_marginStart="18dp"/>
 </RelativeLayout>

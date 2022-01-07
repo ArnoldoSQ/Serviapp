@@ -13,14 +13,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.proyecto.R;
 import com.example.proyecto.telleres;
-import com.example.proyecto.taller;
-import com.example.proyecto.daptador_taller;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
     ImageButton electricidad, plomeria , carpinteria, herreria, jardineria, contruccion,mecanica,limpieza;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        View root = inflater.inflate(R.layout.fragment_menu, container, false);
 
         electricidad=root.findViewById(R.id.button1);
         plomeria=root.findViewById(R.id.button2);
