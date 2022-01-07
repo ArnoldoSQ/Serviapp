@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class daptador_taller extends BaseAdapter {
+public class AdaptadorTaller extends BaseAdapter {
 
     Context achu;
-    List<taller>nombre;
+    List<Taller>nombre;
 
-    public daptador_taller(Context achu, List<taller> nombre) {
+    public AdaptadorTaller(Context achu, List<Taller> nombre) {
         this.achu = achu;
         this.nombre = nombre;
     }

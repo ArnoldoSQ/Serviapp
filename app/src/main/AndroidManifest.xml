@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto">
         <activity
-            android:name=".telleres"
+            android:name=".TalleresActivity"
             android:exported="false" />
         <activity
             android:name=".Perfil_usuario"

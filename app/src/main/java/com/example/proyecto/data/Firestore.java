@@ -10,10 +10,12 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -22,7 +24,7 @@ public class  Firestore extends AsyncTask<Void, Void, Void> {
     private final FirebaseFirestore firestore;
     private final FirebaseAuth fireauth;
     private Map<String, Object> data;
-    private onFinish onFinish = null;
+    private final onFinish onFinish;
     @SuppressLint("StaticFieldLeak")
     private final Context context;
     private ProgressDialog progressDialog;
@@ -48,34 +50,46 @@ public class  Firestore extends AsyncTask<Void, Void, Void> {
         this.action = "Ingresando...";
     }
 
-    private void setResult(String result) {
-        this.result = result;
+    private Task<Void> registerUser(){
+        try{
+            String correo = Objects.requireNonNull(this.data.get("correo")).toString();
+            String contraseña = Objects.requireNonNull(this.data.get("contraseña")).toString();
+
+            await(this.firestore.collection("Usuario").document(this.newDocID).set(data));
+            await(this.fireauth.createUserWithEmailAndPassword(correo,contraseña));
+
+            this.result = "Cuenta creado con éxito";
+        } catch (Exception e){
+            this.result = "Error: " + e.toString();
+        }
+
+        return  null;
+    }
+
+    private Task<Void> tryLogin(){
+        try{
+            String correo = Objects.requireNonNull(this.data.get("correo")).toString();
+            String contraseña = Objects.requireNonNull(this.data.get("contraseña")).toString();
+            await(this.fireauth.signInWithEmailAndPassword(correo, contraseña));
+            this.result = "Bienvenido";
+        } catch (Exception e){
+            this.result = "Error: " + e.toString();
+        }
+
+        return null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected Void doInBackground(Void... voids) {
-        if(this.action.equals("Registrando usuario...")){
-            try{
-                String correo = Objects.requireNonNull(this.data.get("correo")).toString();
-                String contraseña = Objects.requireNonNull(this.data.get("contraseña")).toString();
-
-                await(this.firestore.collection("Usuario").document(this.newDocID).set(data));
-                await(this.fireauth.createUserWithEmailAndPassword(correo,contraseña));
-
-                setResult("Cuenta creada con éxito.");
-            } catch (Exception e ){
-                setResult("Error al crear la cuenta: " + e.toString());
+        try{
+            if(this.action.equals("Registrando usuario...")){
+                await(Objects.requireNonNull(this.registerUser()));
+            } else if(this.action.equals("Ingresando...")) {
+                await(Objects.requireNonNull(this.tryLogin()));
             }
-        } else if(this.action.equals("Ingresando...")){
-            try{
-                String correo = Objects.requireNonNull(this.data.get("correo")).toString();
-                String contraseña = Objects.requireNonNull(this.data.get("contraseña")).toString();
-                await(this.fireauth.signInWithEmailAndPassword(correo, contraseña));
-                setResult("Bienvenido");
-            } catch (Exception e){
-                setResult("Error: " + e.toString());
-            }
+        } catch (Exception ignored){
+
         }
 
         return null;

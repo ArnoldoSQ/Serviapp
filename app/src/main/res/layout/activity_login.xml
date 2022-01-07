@@ -22,49 +22,50 @@
         android:id="@+id/username"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:hint="@string/prompt_email"
         android:layout_below="@id/imagen_Sesion"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        android:layout_centerHorizontal="true"/>
+        android:selectAllOnFocus="true" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
 
+        android:layout_below="@id/username"
+        android:layout_centerHorizontal="true"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:rotationX="12"
-        android:selectAllOnFocus="true"
-        android:layout_below="@id/username"
-        android:layout_centerHorizontal="true"/>
+        android:selectAllOnFocus="true" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/socio_check"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="start"
-        android:layout_marginBottom="350dp"
+        android:padding="8dp"
         android:text="@string/action_sign_in" />
 
     <Button
         android:id="@+id/ingresar_r"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/login"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:text="Registrar" />
+        android:background="@android:color/transparent"
+        android:text="¿No tienes una cuenta? Registrate"
+        android:textColor="@color/purple_500" />
 
     <CheckBox
         android:id="@+id/socio_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
-        android:text="Soy Socio"
-        android:layout_marginStart="18dp"/>
+        android:layout_marginStart="18dp"
+        android:text="Soy Socio" />
 </RelativeLayout>

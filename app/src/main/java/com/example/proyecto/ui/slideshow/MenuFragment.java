@@ -6,13 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.proyecto.R;
-import com.example.proyecto.telleres;
+import com.example.proyecto.TalleresActivity;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
     ImageButton electricidad, plomeria , carpinteria, herreria, jardineria, contruccion,mecanica,limpieza;
@@ -37,6 +36,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         contruccion.setOnClickListener(this);
         mecanica.setOnClickListener(this);
         limpieza.setOnClickListener(this);
+
         return root;
     }
 
@@ -47,29 +47,30 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getContext(), telleres.class);
-        String achu = "ninguno";
+        Intent intent = new Intent(getContext(), TalleresActivity.class);
+        String categoria = "NULL";
 
         int id=v.getId();
         if(electricidad.getId()==id){
-            achu="electricidad";
+            categoria="Electricidad";
         }else if (plomeria.getId()==id){
-            achu="plomeria";
+            categoria="Plomeria";
         }else if(carpinteria.getId()==id){
-            achu="carpinteria";
+            categoria="Carpinteria";
         }else if(herreria.getId()==id){
-            achu="herreria";
+            categoria="Herreria";
         }else if (jardineria.getId()==id){
-            achu="jardineria";
+            categoria="Jardineria";
         }else if (contruccion.getId()==id){
-            achu="contruccion";
+            categoria="Contruccion";
         }else if (mecanica.getId()==id){
-            achu="mecanica";
+            categoria="Mecanica";
         }else if (limpieza.getId()==id){
-            achu="limpieza";
+            categoria="Limpieza";
         }
 
-        Toast.makeText(getContext(), achu, Toast.LENGTH_SHORT).show();
+        intent.putExtra("categoria", categoria);
+        startActivity(intent);
     }
 
 }

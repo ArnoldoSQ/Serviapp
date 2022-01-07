@@ -3,7 +3,7 @@ package com.example.proyecto;
 
 import android.graphics.drawable.Drawable;
 
-public class taller {
+public class Taller {
 
     String text;
     int id;
@@ -17,7 +17,7 @@ public class taller {
     }
 
 
-    public taller(String text, Drawable imagen, int id) {
+    public Taller(String text, Drawable imagen, int id) {
         this.text = text;
         this.imagen = imagen;
         this.id=id;
