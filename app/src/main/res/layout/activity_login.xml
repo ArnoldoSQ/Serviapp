@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ui.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imagen_Sesion"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/logo" />
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_email"
+       android:layout_below="@id/imagen_Sesion"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        android:layout_centerHorizontal="true"
+
+       />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+
+        android:hint="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:rotationX="12"
+        android:selectAllOnFocus="true"
+        android:layout_below="@id/username"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/socio_check"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="start"
+        android:layout_marginBottom="350dp"
+        android:enabled="false"
+        android:text="@string/action_sign_in" />
+
+
+
+
+    <Button
+        android:id="@+id/ingresar_r"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Registrar" />
+
+    <CheckBox
+        android:id="@+id/socio_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:text="Soy Socio"
+        android:layout_marginStart="18dp"
+
+        />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "268083883498",
+    "project_id": "serviapp-70232",
+    "storage_bucket": "serviapp-70232.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268083883498:android:bc1bee68f5c62b87a39693",
+        "android_client_info": {
+          "package_name": "com.example.proyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268083883498-nhbmjj1pt9gkt2vd24kidasvdvb8j0e8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUQLxIvfA_Kyz5FMVVxEyNrWulDVryzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268083883498-nhbmjj1pt9gkt2vd24kidasvdvb8j0e8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
