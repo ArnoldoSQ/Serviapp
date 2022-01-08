@@ -52,7 +52,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         int id=v.getId();
         if(electricidad.getId()==id){
-            categoria="Electricidad";
+            categoria="Electricista ";
         }else if (plomeria.getId()==id){
             categoria="Plomeria";
         }else if(carpinteria.getId()==id){
@@ -62,7 +62,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }else if (jardineria.getId()==id){
             categoria="Jardineria";
         }else if (contruccion.getId()==id){
-            categoria="Contruccion";
+            categoria="Construccion";
         }else if (mecanica.getId()==id){
             categoria="Mecanica";
         }else if (limpieza.getId()==id){
@@ -72,5 +72,4 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         intent.putExtra("categoria", categoria);
         startActivity(intent);
     }
-
 }

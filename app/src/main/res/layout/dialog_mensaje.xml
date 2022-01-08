@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/texto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:text="Describa con detalle su problema.:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/problema"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/texto"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/border"
+        android:gravity="top"
+        android:inputType="text|textMultiLine"
+        android:scrollbars="vertical" />
+</RelativeLayout>

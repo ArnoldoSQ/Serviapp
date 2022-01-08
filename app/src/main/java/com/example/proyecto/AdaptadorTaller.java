@@ -26,7 +26,7 @@ public class AdaptadorTaller extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Taller getItem(int position) {
         return nombre.get(position);
     }
 
