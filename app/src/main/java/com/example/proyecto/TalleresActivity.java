@@ -14,10 +14,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.proyecto.data.FirestoreRetrieve;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class TalleresActivity extends AppCompatActivity {
@@ -65,7 +67,7 @@ public class TalleresActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DialogoMensaje dialogo = new DialogoMensaje((telefono, mensaje) -> {
-                    enviarMensaje(telefono, mensaje);
+                    crearMensaje(telefono, mensaje);
                 });
 
                 Bundle b = new Bundle();
@@ -76,7 +78,27 @@ public class TalleresActivity extends AppCompatActivity {
         });
     }
 
-    private void enviarMensaje(String telefono, String mensaje  ){
+    private void crearMensaje(String telefono, String mensaje){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String email = auth.getCurrentUser().getEmail();
+
+        FirestoreRetrieve firestore = new FirestoreRetrieve(this, result -> {
+            Map<String, Object> usuario = result.get(0).getData();
+            String nombre = usuario.get("usuario").toString();
+            String domicilio = usuario.get("domicilio").toString();
+
+            enviarMensaje(telefono, mensaje, nombre, domicilio);
+        });
+
+        firestore.getDocument("Usuario", email, false);
+        firestore.execute();
+    }
+
+    private void enviarMensaje(String telefono, String problema, String nombre, String domicilio){
+        String mensaje = "Nombre: " + nombre + "\n";
+        mensaje += "Domicilio: " + domicilio + "\n\n";
+        mensaje += "Problema: " + problema;
+
         ModuloMensajes mensajeria = new ModuloMensajes(this);
         mensajeria.crearMensaje(telefono, mensaje);
         mensajeria.execute();

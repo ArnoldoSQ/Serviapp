@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
@@ -70,12 +71,25 @@ public class  FirestoreRetrieve extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    private Task<Void> getDocument(){
+        try {
+            QuerySnapshot reference = await(this.firestore.collection(this.collectionID).whereEqualTo("correo", this.documentID).get());
+            this.result = reference.getDocuments();
+        } catch (Exception e) {
+            Toast.makeText(context, "Ocurrió un error inesperado. " + e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        return null;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected Void doInBackground(Void... voids) {
         try{
             if(this.action.equals("collection")) {
                 await(Objects.requireNonNull(getCollection()));
+            } else if(this.action.equals("document")){
+                await(Objects.requireNonNull(getDocument()));
             }
         } catch (Exception ignore){ }
 
